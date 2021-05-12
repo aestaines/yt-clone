@@ -15,6 +15,7 @@ const Comments = ({videoId, totalComments}) => {
     const [text, setText] = useState("");
     const  comments  = useSelector(state => state.commentList.comments);
     const _comments = comments?.map(comment => comment.snippet.topLevelComment.snippet);
+    const {photoUrl} = useSelector(state => state.auth.user ? state.auth.user : "")
 
     const handleComment = (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const Comments = ({videoId, totalComments}) => {
         dispatch(addComment(videoId,text))
         setText("");
     }
-    const {photoUrl} = useSelector(state => state.auth.user)
+    
     return (
         <div className="comments">
             <p>{totalComments} comments</p>

@@ -81,6 +81,10 @@ const VideoHorizontal = ({video, searchScreen, subScreen}) => {
 
     const thumbnail = !isVideo && 'videoHorizontal__thumbnail__channel'
 
+    
+    //this.abortController().abort();
+    
+
     return (
         <Row className="videoHorizontal m-1 py-2 align-items-center" onClick={ handleClick }>
             

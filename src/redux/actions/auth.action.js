@@ -12,11 +12,14 @@ export const login = () => async dispatch => {
         })
 
         const provider = new firebase.auth.GoogleAuthProvider()
+        provider.addScope("https://www.googleapis.com/auth/youtube.readonly");
         provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
+        provider.addScope("https://www.googleapis.com/auth/youtubepartner");
+        provider.addScope("https://www.googleapis.com/auth/youtube");
 
 
         const res = await auth.signInWithPopup(provider)
-        console.log(res);
+        console.log("Auth=>",res);
 
         const accessToken = res.credential.accessToken
         const profile = {

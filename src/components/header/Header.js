@@ -12,14 +12,15 @@ const Header = ({handleToggleSidebar}) => {
 
     const history = useHistory();
     const [input, setInput] = useState("");
+    const {photoUrl} = useSelector(state => state?.auth?.user ? state?.auth?.user : "")
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         history.push(`/search/${input}`);
     }
 
-    const {photoUrl} = useSelector(state => state.auth.user)
-
+    
     return (
         <div className="border border-dark header">
             
@@ -41,7 +42,7 @@ const Header = ({handleToggleSidebar}) => {
                 <MdApps size={28} />
 
                 <img 
-                    src={photoUrl} 
+                    src={photoUrl}
                     alt="avatar" 
                 />
 
