@@ -8,6 +8,7 @@ import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal'
 import VideoMetaData from '../../components/videoMetaData/VideoMetaData'
 import { getRelatedVideos, getVideoById } from '../../redux/actions/videos.actions'
 import './_watchScreen.scss'
+import {Helmet} from "react-helmet";
 
 const WatchScreen = () => {
 
@@ -20,11 +21,16 @@ const WatchScreen = () => {
         dispatch(getRelatedVideos(id))
     },[dispatch,id])
 
-    const {videos,loading:relatedVideosLoading} = useSelector(state => state.relatedVideos);
+    const {videos} = useSelector(state => state.relatedVideos);
     const {video, loading} = useSelector(state => state.selectedVideo)
 
     return (
         <Row>
+            <Helmet>
+                <title>
+                {video?.snippet?.title}
+                </title>
+            </Helmet>
             <Col lg={8}>
                     <div className="watchScreen__player">
                         <iframe 

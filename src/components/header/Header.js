@@ -5,6 +5,7 @@ import { FaBars } from 'react-icons/fa';
 import {AiOutlineSearch } from 'react-icons/ai'
 import { MdNotifications, MdApps } from 'react-icons/md'
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 
 const Header = ({handleToggleSidebar}) => {
@@ -16,6 +17,8 @@ const Header = ({handleToggleSidebar}) => {
 
         history.push(`/search/${input}`);
     }
+
+    const {photoUrl} = useSelector(state => state.auth.user)
 
     return (
         <div className="border border-dark header">
@@ -38,7 +41,7 @@ const Header = ({handleToggleSidebar}) => {
                 <MdApps size={28} />
 
                 <img 
-                    src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" 
+                    src={photoUrl} 
                     alt="avatar" 
                 />
 
